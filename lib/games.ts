@@ -25,4 +25,11 @@ export const games: Game[] = [
     image: '',
     playUrl: 'https://rex.jar.industries',
   },
+  {
+    slug: 'hockey-pong',
+    title: 'Hockey Pong',
+    description: 'A fun fusion of Pong and air hockey.',
+    image: '',
+    playUrl: 'https://hockeypong.jar.industries',
+  },
 ]
