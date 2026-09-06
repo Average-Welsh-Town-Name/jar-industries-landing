@@ -1,21 +1,25 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Libre_Baskerville } from 'next/font/google'
 import './globals.css'
 
 const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
+const baskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-baskerville',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://jar.industries'),
-  title: 'JAR Industries — Independent Game Studio',
-  description:
-    'A showcase of experimental prototypes, retro arcades, and web games built by JAR Industries. Open source, built from scratch, playable in your browser.',
+  title: 'JAR Industries',
+  description: 'An independent game studio. A showcase of games built by JAR Industries.',
   generator: 'v0.app',
   openGraph: {
-    title: 'JAR Industries — Independent Game Studio',
-    description:
-      'Building the next generation of web & indie games. Experimental prototypes, retro arcades, and open-source web games.',
+    title: 'JAR Industries',
+    description: 'An independent game studio. A showcase of games built by JAR Industries.',
     url: 'https://jar.industries',
     siteName: 'JAR Industries',
     type: 'website',
@@ -31,8 +35,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  themeColor: '#1a1c22',
+  themeColor: '#0b1024',
 }
 
 export default function RootLayout({
@@ -41,7 +44,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`bg-background ${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`bg-navy ${geistSans.variable} ${geistMono.variable} ${baskerville.variable}`}
+    >
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
