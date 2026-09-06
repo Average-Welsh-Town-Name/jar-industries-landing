@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JAR Industries</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      margin: 0;
+    }
+    h1 { color: #58a6ff; margin-bottom: 0.5rem; }
+    p { color: #8b949e; max-width: 500px; text-align: center; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .card h3 { margin-top: 0; color: #f0f6fc; }
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #238636;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .card a:hover { background: #2ea043; }
+  </style>
+</head>
+<body>
+  <h1>JAR Industries</h1>
+  <p>Indie game developer. Check out my latest playable builds below.</p>
+  
+  <div class="grid">
+    <div class="card">
+      <h3>Featured Game</h3>
+      <p>My latest web build hosted on Render.</p>
+      <a href="https://game.jar.industries" target="_blank">Play Now</a>
+    </div>
+  </div>
+</body>
+</html>
