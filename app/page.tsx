@@ -1,27 +1,23 @@
-import { ArrowUpRight } from 'lucide-react'
-import { Logo } from '@/components/logo'
+import { TypingTitle } from '@/components/typing-title'
+import { GameTile } from '@/components/game-tile'
+import { games } from '@/lib/games'
 
 export default function Page() {
   return (
-    <main className="flex min-h-dvh flex-col items-center justify-center gap-8 px-6 text-center">
-      <div className="flex items-center gap-3">
-        <Logo />
-        <span className="font-mono text-sm tracking-widest text-muted-foreground">
-          JAR INDUSTRIES
-        </span>
-      </div>
+    <>
+      {/* Navy "pull-away" band that the beige foreground scrolls over */}
+      <header className="fixed inset-x-0 top-0 z-0 flex h-[20vh] items-end justify-center bg-navy pb-[2.5vh]">
+        <TypingTitle />
+      </header>
 
-      <h1 className="text-balance font-sans text-4xl font-semibold tracking-tight sm:text-5xl">
-        Hegemony
-      </h1>
-
-      <a
-        href="https://hegemony.jar.industries"
-        className="group inline-flex items-center gap-2 rounded-md border border-border bg-card px-6 py-3 font-mono text-sm text-foreground transition-colors hover:border-primary hover:text-primary"
-      >
-        Play Now
-        <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </a>
-    </main>
+      {/* Beige foreground covering 80% of the page */}
+      <main className="relative z-10 mt-[20vh] min-h-[80vh] bg-beige pt-[10vh] pb-[14vh]">
+        <div className="grid grid-cols-1 gap-10 px-[8vw] sm:grid-cols-2 md:grid-cols-3 md:gap-[5vw] md:px-[15vw]">
+          {games.map((game) => (
+            <GameTile key={game.slug} game={game} />
+          ))}
+        </div>
+      </main>
+    </>
   )
 }
