@@ -11,8 +11,8 @@ export default function Page() {
       </header>
 
       {/* Beige foreground covering 80% of the page */}
-      <main className="relative z-10 mt-[20vh] min-h-[80vh] bg-beige pt-[10vh] pb-[14vh]">
-        <div className="grid grid-cols-1 gap-10 px-[8vw] sm:grid-cols-2 md:grid-cols-3 md:gap-[5vw] md:px-[15vw]">
+      <main className="relative z-10 mt-[20vh] min-h-[80vh] bg-beige pt-[8vh] pb-[10vh]">
+        <div className="grid grid-cols-1 gap-10 px-[8vw] sm:grid-cols-2 md:grid-cols-3 md:gap-[4vw] md:px-[8vw]">
           {games.map((game) => (
             <GameTile key={game.slug} game={game} />
           ))}
