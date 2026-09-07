@@ -23,7 +23,7 @@ export const games: Game[] = [
     slug: 'rex-run',
     title: 'Rex Run',
     description:
-      'Civilization has crumbled. The world is over. Yet a new life begins. Dinosaurs have overrun the lands, and as the last humans, it is your duty to escape. Can you outlive Henderson? Or shall you became his meal?',
+      'Civilization has crumbled. The world is over. Yet a new life begins. Dinosaurs have overrun the lands, and as the last humans, it is your duty to escape. Can you outlive Henderson? Or shall you become his meal?',
     image: '/games/rex-run-cover.png',
     hero: '/games/rex-run-hero.png',
     playUrl: 'https://rexrun.jar.industries',
