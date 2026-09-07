@@ -19,7 +19,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
           <img
             src={game.hero || '/placeholder.svg'}
             alt={`${game.title} screenshot`}
-            className="w-full rounded-sm object-cover shadow-xl ring-1 ring-navy/10"
+            className="aspect-[4/3] w-full rounded-sm object-cover shadow-xl ring-1 ring-navy/10"
           />
         </div>
 
