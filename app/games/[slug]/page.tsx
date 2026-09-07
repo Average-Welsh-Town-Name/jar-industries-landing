@@ -15,7 +15,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
   return (
     <>
       <header className="bg-navy">
-        <div className="mx-auto flex max-w-[1600px] items-center px-[6vw] py-4 md:px-8">
+        <div className="mx-auto flex max-w-[1600px] items-center px-[6vw] py-6 md:px-8">
           <Link
             href="/"
             className="font-serif text-xl leading-[1.3] tracking-tight text-beige transition-opacity hover:opacity-80 md:text-2xl"
@@ -26,7 +26,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
       </header>
 
       <main className="min-h-dvh bg-beige text-navy">
-        <div className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-[1600px] flex-col gap-10 px-[6vw] py-[8vh] md:flex-row md:items-center md:gap-12 md:px-8">
+        <div className="mx-auto flex min-h-[calc(100dvh-6rem)] max-w-[1600px] flex-col gap-10 px-[6vw] py-[8vh] md:flex-row md:items-center md:gap-12 md:px-8">
         <div className="md:w-[60%]">
           <img
             src={game.hero || '/placeholder.svg'}
