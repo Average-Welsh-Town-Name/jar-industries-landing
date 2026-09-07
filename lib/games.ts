@@ -23,7 +23,7 @@ export const games: Game[] = [
     description:
       'A fast retro endless runner. Leap the cacti, chase the high score, and see how far the rex can run before dusk catches up.',
     image: '',
-    playUrl: 'https://rex.jar.industries',
+    playUrl: 'https://rexrun.jar.industries',
   },
   {
     slug: 'hockey-pong',
