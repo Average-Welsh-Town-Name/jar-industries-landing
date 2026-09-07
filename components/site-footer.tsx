@@ -16,7 +16,7 @@ export function SiteFooter() {
           </div>
           <p className="max-w-prose leading-relaxed text-beige/70">
             {
-              '[Placeholder] Industry is the relentless act of building something from nothing. At JAR Industries, we take strange ideas and forge them into games. We prototype without fear, break every rule worth breaking, and ship what survives. Some become worlds. Some become lessons. Will the next one be yours to play? (Placeholder copy \u2014 update with the studio\u2019s real story and voice.)'
+              'Industry is the act of building something from nothing. At JAR Industries, we take curious ideas and turn them into games. We prototype freely, try things that might not work, and ship the ones that do. Some become worlds. Some become lessons. Will the next one be yours to play?'
             }
           </p>
         </section>
