@@ -16,7 +16,7 @@ export function SiteFooter() {
           </div>
           <p className="max-w-prose leading-relaxed text-beige/70">
             {
-              '[Placeholder] JAR Industries is an independent game studio building experimental web and indie games from scratch. We prototype fast, test wild mechanics, and ship our projects out into the world. This blurb is placeholder copy \u2014 update it with the studio\u2019s real story, mission, and voice.'
+              '[Placeholder] Industry is the relentless act of building something from nothing. At JAR Industries, we take strange ideas and forge them into games. We prototype without fear, break every rule worth breaking, and ship what survives. Some become worlds. Some become lessons. Will the next one be yours to play? (Placeholder copy \u2014 update with the studio\u2019s real story and voice.)'
             }
           </p>
         </section>
