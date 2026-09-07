@@ -1,5 +1,6 @@
 import { TypingTitle } from '@/components/typing-title'
 import { GameTile } from '@/components/game-tile'
+import { SiteFooter } from '@/components/site-footer'
 import { games } from '@/lib/games'
 
 export default function Page() {
@@ -18,6 +19,10 @@ export default function Page() {
           ))}
         </div>
       </main>
+
+      <div className="relative z-10">
+        <SiteFooter />
+      </div>
     </>
   )
 }
