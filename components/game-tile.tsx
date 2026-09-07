@@ -8,7 +8,7 @@ export function GameTile({ game }: { game: Game }) {
       href={`/games/${game.slug}`}
       className="group flex flex-col overflow-hidden rounded-sm bg-white shadow-sm ring-1 ring-navy/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-navy/25"
     >
-      <div className="aspect-[3/2] w-full overflow-hidden bg-black">
+      <div className="aspect-[4/3] w-full overflow-hidden bg-black">
         <img
           src={game.image || '/placeholder.svg'}
           alt={`${game.title} cover art`}
