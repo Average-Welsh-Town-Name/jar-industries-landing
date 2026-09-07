@@ -19,8 +19,8 @@ function deleteTo(frames: Frame[], full: string, targetLen: number, speed: numbe
 }
 
 // Build one full type -> hold -> delete cycle. When not forced normal, there is
-// a 1/20 chance of the "JARED" slip and a 1/20 chance of the "JAR Corporate"
-// slip, each of which is frantically corrected before settling on the real name.
+// a 5% chance each of the "JARED" slip, the "JAR Corporate" slip, and an
+// "I hate this job" slip, each corrected before settling on the real name.
 function buildCycle(forceNormal: boolean): Frame[] {
   const frames: Frame[] = []
   const roll = forceNormal ? 1 : Math.random()
@@ -39,6 +39,14 @@ function buildCycle(forceNormal: boolean): Frame[] {
     typeInto(frames, '', 'JAR', 430, 1500)
     typeInto(frames, 'JAR', ' Corporate', 210, 900)
     deleteTo(frames, 'JAR Corporate', 3, 30, 300)
+    typeInto(frames, 'JAR', ' Industries', 180, 10000)
+    deleteTo(frames, 'JAR Industries', 0, 55, 3000)
+  } else if (roll < 0.15) {
+    // Slip: absent-mindedly types "I hate this job", catches it, wipes, and
+    // types the real name.
+    typeInto(frames, '', 'I hate this job', 190, 1400)
+    deleteTo(frames, 'I hate this job', 0, 45, 320)
+    typeInto(frames, '', 'JAR', 210, 260)
     typeInto(frames, 'JAR', ' Industries', 180, 10000)
     deleteTo(frames, 'JAR Industries', 0, 55, 3000)
   } else {
