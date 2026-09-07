@@ -78,7 +78,7 @@ export function TypingTitle() {
   return (
     <h1
       aria-label="JAR Industries"
-      className="font-serif text-3xl leading-[1.3] tracking-tight text-beige sm:text-5xl lg:text-6xl"
+      className="transform-gpu pb-[0.15em] font-serif text-3xl leading-[1.3] tracking-tight text-beige sm:text-5xl lg:text-6xl"
     >
       <span aria-hidden="true">{frames[index]?.text ?? ''}</span>
       <span
