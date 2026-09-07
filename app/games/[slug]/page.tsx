@@ -14,15 +14,16 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
 
   return (
     <main className="min-h-dvh bg-beige text-navy">
-      <div className="mx-auto flex min-h-dvh max-w-6xl flex-col gap-10 px-[8vw] py-[8vh] md:flex-row md:items-center md:gap-14 md:px-10">
-        <div className="md:w-1/2">
-          <div
-            className="aspect-[4/3] w-full rounded-sm bg-black shadow-xl ring-1 ring-navy/10"
-            aria-label={`${game.title} cover art placeholder`}
+      <div className="mx-auto flex min-h-dvh max-w-[1600px] flex-col gap-10 px-[6vw] py-[8vh] md:flex-row md:items-center md:gap-12 md:px-8">
+        <div className="md:w-[60%]">
+          <img
+            src={game.hero || '/placeholder.svg'}
+            alt={`${game.title} screenshot`}
+            className="w-full rounded-sm object-cover shadow-xl ring-1 ring-navy/10"
           />
         </div>
 
-        <div className="flex flex-col gap-6 md:w-1/2">
+        <div className="flex flex-col gap-6 md:w-[40%]">
           <Link
             href="/"
             className="inline-flex w-fit items-center gap-2 font-mono text-xs uppercase tracking-widest text-navy/50 transition-colors hover:text-navy"
