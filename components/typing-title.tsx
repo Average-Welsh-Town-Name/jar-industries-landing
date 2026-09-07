@@ -2,47 +2,77 @@
 
 import { useEffect, useState } from 'react'
 
-const WORD1 = 'JAR'
-const WORD2 = ' Industries'
-const FULL = WORD1 + WORD2
-
 type Frame = { text: string; hold: number }
 
-function buildFrames(): Frame[] {
+function typeInto(frames: Frame[], prefix: string, word: string, speed: number, holdAfter?: number) {
+  for (let i = 1; i <= word.length; i++) {
+    const isLast = i === word.length
+    frames.push({ text: prefix + word.slice(0, i), hold: isLast && holdAfter ? holdAfter : speed })
+  }
+}
+
+function deleteTo(frames: Frame[], full: string, targetLen: number, speed: number, holdAfter?: number) {
+  for (let i = full.length - 1; i >= targetLen; i--) {
+    const isLast = i === targetLen
+    frames.push({ text: full.slice(0, i), hold: isLast && holdAfter ? holdAfter : speed })
+  }
+}
+
+// Build one full type -> hold -> delete cycle. When not forced normal, there is
+// a 1/20 chance of the "JARED" slip and a 1/20 chance of the "JAR Corporate"
+// slip, each of which is frantically corrected before settling on the real name.
+function buildCycle(forceNormal: boolean): Frame[] {
   const frames: Frame[] = []
-  // Gradually type "JAR", then pause on the word.
-  for (let i = 1; i <= WORD1.length; i++) {
-    frames.push({ text: WORD1.slice(0, i), hold: i === WORD1.length ? 1500 : 430 })
+  const roll = forceNormal ? 1 : Math.random()
+
+  if (roll < 0.05) {
+    // Slip: types "JARED Industries", then frantically wipes and redoes it.
+    typeInto(frames, '', 'JAR', 430, 500)
+    typeInto(frames, 'JAR', 'ED', 200, 320)
+    typeInto(frames, 'JARED', ' Industries', 200, 900)
+    deleteTo(frames, 'JARED Industries', 0, 30, 260)
+    typeInto(frames, '', 'JAR', 210, 260)
+    typeInto(frames, 'JAR', ' Industries', 180, 10000)
+    deleteTo(frames, 'JAR Industries', 0, 55, 3000)
+  } else if (roll < 0.1) {
+    // Slip: types "JAR Corporate", realizes, and swaps in "Industries".
+    typeInto(frames, '', 'JAR', 430, 1500)
+    typeInto(frames, 'JAR', ' Corporate', 210, 900)
+    deleteTo(frames, 'JAR Corporate', 3, 30, 300)
+    typeInto(frames, 'JAR', ' Industries', 180, 10000)
+    deleteTo(frames, 'JAR Industries', 0, 55, 3000)
+  } else {
+    // Normal: type "JAR", pause, type " Industries", hold 10s, delete, wait 3s.
+    typeInto(frames, '', 'JAR', 430, 1500)
+    typeInto(frames, 'JAR', ' Industries', 210, 10000)
+    deleteTo(frames, 'JAR Industries', 0, 55, 3000)
   }
-  // Continue typing " Industries", then hold the full title for 10s.
-  for (let i = 1; i <= WORD2.length; i++) {
-    frames.push({ text: WORD1 + WORD2.slice(0, i), hold: i === WORD2.length ? 10000 : 210 })
-  }
-  // Delete everything, then wait 3s before restarting.
-  for (let i = FULL.length - 1; i >= 0; i--) {
-    frames.push({ text: FULL.slice(0, i), hold: i === 0 ? 3000 : 55 })
-  }
+
   return frames
 }
 
-const FRAMES = buildFrames()
-
 export function TypingTitle() {
+  const [frames, setFrames] = useState<Frame[]>(() => buildCycle(true))
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIndex((prev) => (prev + 1) % FRAMES.length)
-    }, FRAMES[index].hold)
+      if (index >= frames.length - 1) {
+        setFrames(buildCycle(false))
+        setIndex(0)
+      } else {
+        setIndex(index + 1)
+      }
+    }, frames[index]?.hold ?? 300)
     return () => clearTimeout(timer)
-  }, [index])
+  }, [index, frames])
 
   return (
     <h1
       aria-label="JAR Industries"
       className="font-serif text-3xl tracking-tight text-beige sm:text-5xl lg:text-6xl"
     >
-      <span aria-hidden="true">{FRAMES[index].text}</span>
+      <span aria-hidden="true">{frames[index]?.text ?? ''}</span>
       <span
         aria-hidden="true"
         className="animate-blink ml-1 inline-block h-[0.9em] w-[2px] translate-y-[0.12em] bg-beige align-baseline"
