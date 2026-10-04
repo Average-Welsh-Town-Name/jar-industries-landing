@@ -50,13 +50,24 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
             {game.description}
           </p>
 
-          <a
-            href={game.playUrl}
-            className="group inline-flex w-fit items-center gap-2 rounded-sm bg-navy px-6 py-3 font-mono text-sm text-beige transition-colors hover:bg-navy/85"
-          >
-            Play Now
-            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={game.playUrl}
+              className="group inline-flex w-fit items-center gap-2 rounded-sm bg-navy px-6 py-3 font-mono text-sm text-beige transition-colors hover:bg-navy/85"
+            >
+              {game.mobileUrl ? 'Play on Desktop' : 'Play Now'}
+              <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            {game.mobileUrl && (
+              <a
+                href={game.mobileUrl}
+                className="group inline-flex w-fit items-center gap-2 rounded-sm bg-navy px-6 py-3 font-mono text-sm text-beige transition-colors hover:bg-navy/85"
+              >
+                Play on Mobile
+                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            )}
+          </div>
         </div>
         </div>
       </main>

@@ -5,6 +5,7 @@ export type Game = {
   image: string
   hero: string
   playUrl: string
+  mobileUrl?: string
 }
 
 export const GITHUB_URL = 'https://github.com/jar-industries'
@@ -27,6 +28,7 @@ export const games: Game[] = [
     image: '/games/rex-run-cover.png',
     hero: '/games/rex-run-hero.png',
     playUrl: 'https://rexrun.jar.industries',
+    mobileUrl: 'https://rexrun-mobile.jar.industries',
   },
   {
     slug: 'hockey-pong',
